@@ -7,9 +7,14 @@ routes.get("/:id",  async function(req, res) {
     res.send(result);
 })
 
-routes.post('/', async function(req, res) {
-    let result = (req.body);
-    res.send(result);
+routes.post('/insert', async function(req, res) {
+    const data = await operadores.Inserir(req.body);
+    if (data > 0) {
+        res.send("Operador cadastrado!")
+    }
+    else {
+        res.send("Erro!")        
+    }    
 })
 
 module.exports = routes;
